@@ -33,7 +33,7 @@
 				trainOperationalCostPerHour: 195.0,
 				carOperationalCostPerHour: 25.5,
 				trackMaintenanceCostPerMeter: 300,
-				stationMaintenanceCostPerYear: 320,
+				stationMaintenanceCostPerYear: 320000,
 				stopTimeSeconds: 24,
 				tphLimit: 28,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
@@ -78,7 +78,7 @@
 				trainOperationalCostPerHour: 120.0,
 				carOperationalCostPerHour: 18.0,
 				trackMaintenanceCostPerMeter: 300,
-				stationMaintenanceCostPerYear: 400,
+				stationMaintenanceCostPerYear: 400000,
 				stopTimeSeconds: 21,
 				tphLimit: 42,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
@@ -126,7 +126,7 @@
 				trainOperationalCostPerHour: 195.0,
 				carOperationalCostPerHour: 25.5,
 				trackMaintenanceCostPerMeter: 300,
-				stationMaintenanceCostPerYear: 320,
+				stationMaintenanceCostPerYear: 320000,
 				stopTimeSeconds: 24,
 				tphLimit: 28,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
@@ -177,7 +177,7 @@
 				trainOperationalCostPerHour: 120.0,
 				carOperationalCostPerHour: 18.0,
 				trackMaintenanceCostPerMeter: 300,
-				stationMaintenanceCostPerYear: 400,
+				stationMaintenanceCostPerYear: 400000,
 				stopTimeSeconds: 21,
 				tphLimit: 42,
 				crossoverSpeed: 6.7,
@@ -228,7 +228,7 @@
 				trainOperationalCostPerHour: 220.0,
 				carOperationalCostPerHour: 28.0,
 				trackMaintenanceCostPerMeter: 300,
-				stationMaintenanceCostPerYear: 320,
+				stationMaintenanceCostPerYear: 320000,
 				stopTimeSeconds: 30,
 				tphLimit: 28,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
@@ -279,7 +279,7 @@
 				trainOperationalCostPerHour: 220.0,
 				carOperationalCostPerHour: 28.0,
 				trackMaintenanceCostPerMeter: 300,
-				stationMaintenanceCostPerYear: 320,
+				stationMaintenanceCostPerYear: 320000,
 				stopTimeSeconds: 30,
 				tphLimit: 28,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
@@ -330,7 +330,7 @@
 				trainOperationalCostPerHour: 120.0,
 				carOperationalCostPerHour: 18.0,
 				trackMaintenanceCostPerMeter: 300,
-				stationMaintenanceCostPerYear: 320,
+				stationMaintenanceCostPerYear: 320000,
 				stopTimeSeconds: 21,
 				tphLimit: 42,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
@@ -381,7 +381,7 @@
 				trainOperationalCostPerHour: 120.0,
 				carOperationalCostPerHour: 18.0,
 				trackMaintenanceCostPerMeter: 300,
-				stationMaintenanceCostPerYear: 400,
+				stationMaintenanceCostPerYear: 400000,
 				stopTimeSeconds: 21,
 				tphLimit: 42,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
@@ -432,7 +432,7 @@
 				trainOperationalCostPerHour: 195.0,
 				carOperationalCostPerHour: 25.5,
 				trackMaintenanceCostPerMeter: 300,
-				stationMaintenanceCostPerYear: 320,
+				stationMaintenanceCostPerYear: 320000,
 				stopTimeSeconds: 32,
 				tphLimit: 24,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
@@ -534,7 +534,7 @@
 				trainOperationalCostPerHour: 225.0,
 				carOperationalCostPerHour: 32.5,
 				trackMaintenanceCostPerMeter: 100,
-				stationMaintenanceCostPerYear: 320,
+				stationMaintenanceCostPerYear: 320000,
 				stopTimeSeconds: 32,
 				tphLimit: 24,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
@@ -608,9 +608,9 @@
 			gradeCrossingMaintenancePerYear: 8000, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 15,
-				medium: 18,
-				minor: 21,
+				major: 30,
+				medium: 36,
+				minor: 42,
 			},
 		})
 
@@ -667,9 +667,9 @@
 			gradeCrossingMaintenancePerYear: 8000, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 15,
-				medium: 18,
-				minor: 21,
+				major: 30,
+				medium: 36,
+				minor: 42,
 			},
 		})
 
@@ -679,7 +679,7 @@
 				maxSpeed: 40,
 				maxAcceleration: 0.9,
 				maxDeceleration: 1.33,
-				maxLateralAcceleration: 1.89,
+				maxLateralAcceleration: 1.8 9,
 				maxSlopePercentage: 2,
 				minTurnRadius: 50,
 				parallelTrackSpacing: 3.94,
@@ -723,9 +723,9 @@
 			gradeCrossingMaintenancePerYear: 8000, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 15,
-				medium: 18,
-				minor: 21,
+				major: 30,
+				medium: 36,
+				minor: 42,
 			},
 		})
 
@@ -782,9 +782,9 @@
 			gradeCrossingMaintenancePerYear: 8000, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 15,
-				medium: 18,
-				minor: 21,
+				major: 30,
+				medium: 36,
+				minor: 42,
 			},
 		})
 
@@ -841,9 +841,9 @@
 			gradeCrossingMaintenancePerYear: 8000, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 15,
-				medium: 18,
-				minor: 21,
+				major: 30,
+				medium: 36,
+				minor: 42,
 			},
 		})
 
@@ -900,9 +900,9 @@
 			gradeCrossingMaintenancePerYear: 8000, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 15,
-				medium: 18,
-				minor: 21,
+				major: 30,
+				medium: 36,
+				minor: 42,
 			},
 		})
 
@@ -959,9 +959,9 @@
 			gradeCrossingMaintenancePerYear: 8000, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 15,
-				medium: 18,
-				minor: 21,
+				major: 30,
+				medium: 36,
+				minor: 42,
 			},
 		})
 
@@ -1018,9 +1018,9 @@
 			gradeCrossingMaintenancePerYear: 8000, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 15,
-				medium: 18,
-				minor: 21,
+				major: 30,
+				medium: 36,
+				minor: 42,
 			},
 		})
 
@@ -1054,7 +1054,7 @@
 				trainOperationalCostPerHour: 120.0,
 				carOperationalCostPerHour: 18,
 				trackMaintenanceCostPerMeter: 300,
-				stationMaintenanceCostPerYear: 400,
+				stationMaintenanceCostPerYear: 400000,
 				stopTimeSeconds: 24,
 				tphLimit: 28,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
@@ -1105,7 +1105,7 @@
 				trainOperationalCostPerHour: 120.0,
 				carOperationalCostPerHour: 18,
 				trackMaintenanceCostPerMeter: 300,
-				stationMaintenanceCostPerYear: 400,
+				stationMaintenanceCostPerYear: 400000,
 				stopTimeSeconds: 24,
 				tphLimit: 28,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
@@ -1156,7 +1156,7 @@
 				trainOperationalCostPerHour: 100,
 				carOperationalCostPerHour: 4,
 				trackMaintenanceCostPerMeter: 300,
-				stationMaintenanceCostPerYear: 200,
+				stationMaintenanceCostPerYear: 200000,
 				stopTimeSeconds: 20,
 				tphLimit: 28,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
@@ -1179,9 +1179,9 @@
 			gradeCrossingMaintenancePerYear: 800, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 20,
-				medium: 20,
-				minor: 40,
+				major: 40,
+				medium: 40,
+				minor: 80,
 			},
 		})
 
@@ -1215,7 +1215,7 @@
 				trainOperationalCostPerHour: 100,
 				carOperationalCostPerHour: 4,
 				trackMaintenanceCostPerMeter: 300,
-				stationMaintenanceCostPerYear: 200,
+				stationMaintenanceCostPerYear: 200000,
 				stopTimeSeconds: 20,
 				tphLimit: 28,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
@@ -1238,9 +1238,9 @@
 			gradeCrossingMaintenancePerYear: 800, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 20,
-				medium: 20,
-				minor: 40,
+				major: 40,
+				medium: 40,
+				minor: 80,
 			},
 		})
 
@@ -1274,7 +1274,7 @@
 				trainOperationalCostPerHour: 100,
 				carOperationalCostPerHour: 4,
 				trackMaintenanceCostPerMeter: 300,
-				stationMaintenanceCostPerYear: 200,
+				stationMaintenanceCostPerYear: 200000,
 				stopTimeSeconds: 20,
 				tphLimit: 28,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
@@ -1297,9 +1297,9 @@
 			gradeCrossingMaintenancePerYear: 800, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 20,
-				medium: 20,
-				minor: 40,
+				major: 40,
+				medium: 40,
+				minor: 80,
 			},
 		})
 
@@ -1333,7 +1333,7 @@
 				trainOperationalCostPerHour: 100,
 				carOperationalCostPerHour: 4,
 				trackMaintenanceCostPerMeter: 300,
-				stationMaintenanceCostPerYear: 200,
+				stationMaintenanceCostPerYear: 200000,
 				stopTimeSeconds: 20,
 				tphLimit: 28,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
@@ -1356,9 +1356,9 @@
 			gradeCrossingMaintenancePerYear: 800, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 20,
-				medium: 20,
-				minor: 40,
+				major: 40,
+				medium: 40,
+				minor: 80,
 			},
 		})
 
@@ -1392,7 +1392,7 @@
 				trainOperationalCostPerHour: 100,
 				carOperationalCostPerHour: 6,
 				trackMaintenanceCostPerMeter: 300,
-				stationMaintenanceCostPerYear: 200,
+				stationMaintenanceCostPerYear: 200000,
 				stopTimeSeconds: 20,
 				tphLimit: 28,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
@@ -1415,9 +1415,9 @@
 			gradeCrossingMaintenancePerYear: 800, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 20,
-				medium: 20,
-				minor: 40,
+				major: 40,
+				medium: 40,
+				minor: 80,
 			},
 		})
 
@@ -1451,7 +1451,7 @@
 				trainOperationalCostPerHour: 75,
 				carOperationalCostPerHour: 4,
 				trackMaintenanceCostPerMeter: 300,
-				stationMaintenanceCostPerYear: 200,
+				stationMaintenanceCostPerYear: 200000,
 				stopTimeSeconds: 20,
 				tphLimit: 32,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
@@ -1502,7 +1502,7 @@
 				trainOperationalCostPerHour: 100,
 				carOperationalCostPerHour: 12/9,
 				trackMaintenanceCostPerMeter: 300,
-				stationMaintenanceCostPerYear: 200,
+				stationMaintenanceCostPerYear: 200000,
 				stopTimeSeconds: 20,
 				tphLimit: 28,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
@@ -1525,9 +1525,9 @@
 			gradeCrossingMaintenancePerYear: 800, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 20,
-				medium: 20,
-				minor: 40,
+				major: 40,
+				medium: 40,
+				minor: 80,
 			},
 		})
 
