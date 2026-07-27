@@ -608,9 +608,9 @@
 			gradeCrossingMaintenancePerYear: 8000, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 30,
-				medium: 36,
-				minor: 42
+				major: 15,
+				medium: 18,
+				minor: 21,
 			},
 		})
 
@@ -667,9 +667,9 @@
 			gradeCrossingMaintenancePerYear: 8000, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 30,
-				medium: 36,
-				minor: 42
+				major: 15,
+				medium: 18,
+				minor: 21,
 			},
 		})
 
@@ -723,9 +723,9 @@
 			gradeCrossingMaintenancePerYear: 8000, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 30,
-				medium: 36,
-				minor: 42
+				major: 15,
+				medium: 18,
+				minor: 21,
 			},
 		})
 
@@ -782,9 +782,9 @@
 			gradeCrossingMaintenancePerYear: 8000, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 30,
-				medium: 36,
-				minor: 42
+				major: 15,
+				medium: 18,
+				minor: 21,
 			},
 		})
 
@@ -841,9 +841,9 @@
 			gradeCrossingMaintenancePerYear: 8000, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 30,
-				medium: 36,
-				minor: 42
+				major: 15,
+				medium: 18,
+				minor: 21,
 			},
 		})
 
@@ -900,9 +900,9 @@
 			gradeCrossingMaintenancePerYear: 8000, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 30,
-				medium: 36,
-				minor: 42
+				major: 15,
+				medium: 18,
+				minor: 21,
 			},
 		})
 
@@ -959,9 +959,9 @@
 			gradeCrossingMaintenancePerYear: 8000, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 30,
-				medium: 36,
-				minor: 42
+				major: 15,
+				medium: 18,
+				minor: 21,
 			},
 		})
 
@@ -1018,9 +1018,9 @@
 			gradeCrossingMaintenancePerYear: 8000, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 30,
-				medium: 36,
-				minor: 42
+				major: 15,
+				medium: 18,
+				minor: 21,
 			},
 		})
 
@@ -1179,9 +1179,9 @@
 			gradeCrossingMaintenancePerYear: 800, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 40,
-				medium: 40,
-				minor: 80
+				major: 20,
+				medium: 20,
+				minor: 40,
 			},
 		})
 
@@ -1238,9 +1238,9 @@
 			gradeCrossingMaintenancePerYear: 800, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 40,
-				medium: 40,
-				minor: 80
+				major: 20,
+				medium: 20,
+				minor: 40,
 			},
 		})
 
@@ -1297,9 +1297,9 @@
 			gradeCrossingMaintenancePerYear: 800, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 40,
-				medium: 40,
-				minor: 80
+				major: 20,
+				medium: 20,
+				minor: 40,
 			},
 		})
 
@@ -1356,9 +1356,9 @@
 			gradeCrossingMaintenancePerYear: 800, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 40,
-				medium: 40,
-				minor: 80
+				major: 20,
+				medium: 20,
+				minor: 40,
 			},
 		})
 
@@ -1415,9 +1415,9 @@
 			gradeCrossingMaintenancePerYear: 800, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 40,
-				medium: 40,
-				minor: 80
+				major: 20,
+				medium: 20,
+				minor: 40,
 			},
 		})
 
@@ -1525,9 +1525,9 @@
 			gradeCrossingMaintenancePerYear: 800, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 40,
-				medium: 40,
-				minor: 80
+				major: 20,
+				medium: 20,
+				minor: 40,
 			},
 		})
 
