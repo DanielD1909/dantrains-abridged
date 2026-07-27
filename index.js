@@ -610,7 +610,7 @@
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
 				major: 30,
 				medium: 36,
-				minor: 42,
+				minor: 42
 			},
 		})
 
@@ -669,7 +669,7 @@
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
 				major: 30,
 				medium: 36,
-				minor: 42,
+				minor: 42
 			},
 		})
 
@@ -725,7 +725,7 @@
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
 				major: 30,
 				medium: 36,
-				minor: 42,
+				minor: 42
 			},
 		})
 
@@ -784,7 +784,7 @@
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
 				major: 30,
 				medium: 36,
-				minor: 42,
+				minor: 42
 			},
 		})
 
@@ -843,7 +843,7 @@
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
 				major: 30,
 				medium: 36,
-				minor: 42,
+				minor: 42
 			},
 		})
 
@@ -902,7 +902,7 @@
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
 				major: 30,
 				medium: 36,
-				minor: 42,
+				minor: 42
 			},
 		})
 
@@ -961,7 +961,7 @@
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
 				major: 30,
 				medium: 36,
-				minor: 42,
+				minor: 42
 			},
 		})
 
@@ -1020,7 +1020,7 @@
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
 				major: 30,
 				medium: 36,
-				minor: 42,
+				minor: 42
 			},
 		})
 
@@ -1181,7 +1181,7 @@
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
 				major: 40,
 				medium: 40,
-				minor: 80,
+				minor: 80
 			},
 		})
 
@@ -1240,7 +1240,7 @@
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
 				major: 40,
 				medium: 40,
-				minor: 80,
+				minor: 80
 			},
 		})
 
@@ -1299,7 +1299,7 @@
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
 				major: 40,
 				medium: 40,
-				minor: 80,
+				minor: 80
 			},
 		})
 
@@ -1358,7 +1358,7 @@
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
 				major: 40,
 				medium: 40,
-				minor: 80,
+				minor: 80
 			},
 		})
 
@@ -1417,7 +1417,7 @@
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
 				major: 40,
 				medium: 40,
-				minor: 80,
+				minor: 80
 			},
 		})
 
@@ -1527,7 +1527,7 @@
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
 				major: 40,
 				medium: 40,
-				minor: 80,
+				minor: 80
 			},
 		})
 
