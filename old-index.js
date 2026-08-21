@@ -2,14 +2,6 @@
 	const api = window.SubwayBuilderAPI;
 	if (!api) console.error(`${TAG} SubwayBuilderAPI not found.`);
 	console.log(Object.keys(api.trains.getTrainTypes()));
-	api.modifyConstants({
-		CONSTRUCTION_COSTS: {
-			BUILDING_OVERPASS: {
-				VERTICAL_CLEARANCE: 1
-			}
-		},
-		MAX_ELEVATION: 30
-	});
 	api.hooks.onMapReady(() => {
 		console.log(Object.keys(api.trains.getTrainTypes()));
 		console.log("test");
@@ -21,10 +13,10 @@
 				maxDeceleration: 1.34,
 				maxLateralAcceleration: 1.63,
 				maxSlopePercentage: 5.5,
-				minTurnRadius: 53,
+				minTurnRadius: 40,
 				parallelTrackSpacing: 3.7,
 				trackClearance: 1.83,
-				minStationTurnRadius: 53,
+				minStationTurnRadius: 400,
 				maxSpeedLocalStation: 14,
 				minCars: 5,
 				maxCars: 10,
@@ -55,9 +47,7 @@
 				TRENCHED: 0.5,
 				RAMP: 0.5
 			},
-			appearance: { color: "#007EC6" },
-			compatibleTrackTypes: ["heavy-metro","NYC-H"],
-			maxOverpassSpan: 150
+			appearance: { color: "#007EC6" }
 		})
 
 		api.trains.modifyTrainType('light-metro', {
@@ -102,14 +92,14 @@
 				TRENCHED: 0.49,
 				RAMP: 0.49
 			},
-			appearance: { color: "#82C341" },
-			maxOverpassSpan: 150
+			appearance: { color: "#82C341" }
 		})
 
+
 		api.trains.registerTrainType({
-			id: "NYC-7",
-			name: "R188-11 (NYC)",
-			description: "The R188 is a subway EMU built by Kawasaki for the NYC Subway's A Division that entered service in 2013. This is the 11 car variant. As of 2024, they are deployed on the 7 Line.",
+			id: "NYC-B",
+			name: "R188 (NYC)",
+			description: "The R188 is a subway EMU built by Kawasaki for the NYC Subway's A Division that entered service in 2013. This is the 5/10 car variant. As of 2024, they are deployed on the 7 Line.",
 			stats: {
 				maxSpeed: 24.6,
 				maxAcceleration: 1.12,
@@ -119,12 +109,12 @@
 				minTurnRadius: 30,
 				parallelTrackSpacing: 3.22,
 				trackClearance: 1.83,
-				minStationTurnRadius: 45,
+				minStationTurnRadius: 400,
 				maxSpeedLocalStation: 14,
-				minCars: 11,
-				maxCars: 11,
-				carsPerCarSet: 11,
-				capacityPerCar: 184,
+				minCars: 5,
+				maxCars: 10,
+				carsPerCarSet: 5,
+				capacityPerCar: 220,
 				carLength: 15.65,
 				trainWidth: 2.62,
 				carCost: 2270000,
@@ -150,222 +140,11 @@
 				TRENCHED: 0.46,
 				RAMP: 0.46
 			},
-			compatibleTrackTypes: ["NYC-7","NYC-B","NYC-0"],
+			compatibleTrackTypes: ["NYC-B"],
 			appearance: { color: "#9A38A1" },
 			portalCost: 10000000, // surcharge per at-grade ↔ cut-and-cover portal
 			rampCost: 5000000,    // surcharge per at-grade ↔ elevated ramp
-			allowGradeCrossing: false,
-			maxOverpassSpan: 150
-		})
-
-
-		
-		api.trains.registerTrainType({
-			id: "NYC-0",
-			name: "R262-6 (NYC)",
-			description: "The R262 is a subway EMU in development for the A Division of the NYC Subway to enter service in the 2030s. This is the 6 car set version for the 42nd Street Shuttle, which will only use them in sets of 1 but 2 is theoretically possible. They will replace the R62s and R62As. Some data is assumed from prior models.",
-			stats: {
-				maxSpeed: 24.6,
-				maxAcceleration: 1.2,
-				maxDeceleration: 1.34,
-				maxLateralAcceleration: 1.63,
-				maxSlopePercentage: 5.5,
-				minTurnRadius: 30,
-				parallelTrackSpacing: 3.22,
-				trackClearance: 1.49,
-				minStationTurnRadius: 45,
-				maxSpeedLocalStation: 14,
-				minCars: 6,
-				maxCars: 12,
-				carsPerCarSet: 6,
-				capacityPerCar: 200,
-				carLength: 15.60,
-				trainWidth: 2.62,
-				carCost: 1666667,
-				minStationLength: 100,
-				maxStationLength: 200,
-				baseTrackCost: 50000,
-				baseStationCost: 64000000,
-				scissorsCrossoverCost: 15000000,
-				trainOperationalCostPerHour: 195.0,
-				carOperationalCostPerHour: 25.5,
-				trackMaintenanceCostPerMeter: 300,
-				stationMaintenanceCostPerYear: 320,
-				stopTimeSeconds: 24,
-				tphLimit: 28,
-				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
-			},
-			elevationMultipliers: {
-				DEEP_BORE: 3.79,
-				STANDARD_TUNNEL: 1.83,
-				CUT_AND_COVER: 0.91,
-				AT_GRADE: 0.30,
-				ELEVATED: 0.73,
-				TRENCHED: 0.46,
-				RAMP: 0.46
-			},
-			compatibleTrackTypes: ["NYC-0","NYC-B","NYC-7"],
-			appearance: { color: "#7C858C" },
-			portalCost: 10000000, // surcharge per at-grade ↔ cut-and-cover portal
-			rampCost: 5000000,    // surcharge per at-grade ↔ elevated ramp
-			allowGradeCrossing: false,
-			maxOverpassSpan: 150
-		})
-
-		api.trains.registerTrainType({
-			id: "NYC-B",
-			name: "R262 (NYC)",
-			description: "The R262 is a subway EMU in development for the A Division of the NYC Subway to enter service in the 2030s. This is the 5 car set version for the IRT. They will replace the R62s and R62As. Some data is assumed from prior models.",
-			stats: {
-				maxSpeed: 24.6,
-				maxAcceleration: 1.2,
-				maxDeceleration: 1.34,
-				maxLateralAcceleration: 1.63,
-				maxSlopePercentage: 5.5,
-				minTurnRadius: 30,
-				parallelTrackSpacing: 3.22,
-				trackClearance: 1.49,
-				minStationTurnRadius: 45,
-				maxSpeedLocalStation: 14,
-				minCars: 5,
-				maxCars: 10,
-				carsPerCarSet: 5,
-				capacityPerCar: 200,
-				carLength: 15.60,
-				trainWidth: 2.62,
-				carCost: 1666667,
-				minStationLength: 100,
-				maxStationLength: 200,
-				baseTrackCost: 50000,
-				baseStationCost: 64000000,
-				scissorsCrossoverCost: 15000000,
-				trainOperationalCostPerHour: 195.0,
-				carOperationalCostPerHour: 25.5,
-				trackMaintenanceCostPerMeter: 300,
-				stationMaintenanceCostPerYear: 320,
-				stopTimeSeconds: 24,
-				tphLimit: 28,
-				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
-			},
-			elevationMultipliers: {
-				DEEP_BORE: 3.79,
-				STANDARD_TUNNEL: 1.83,
-				CUT_AND_COVER: 0.91,
-				AT_GRADE: 0.30,
-				ELEVATED: 0.73,
-				TRENCHED: 0.46,
-				RAMP: 0.46
-			},
-			compatibleTrackTypes: ["NYC-B","NYC-0","NYC-7"],
-			appearance: { color: "#D82233" },
-			portalCost: 10000000, // surcharge per at-grade ↔ cut-and-cover portal
-			rampCost: 5000000,    // surcharge per at-grade ↔ elevated ramp
-			allowGradeCrossing: false,
-			maxOverpassSpan: 150
-		})
-
-		api.trains.registerTrainType({
-			id: "NYC-H",
-			name: "R268-4 (NYC)",
-			description: "The R268 is a subway EMU being built by Kawasaki for the B Division of the NYC Subway to enter service in 2028. This is the 4-car set version for the C, L, M, J, Z, and Franklin Av Shuttle. They will replace the R68s and R68As.",
-			stats: {
-				maxSpeed: 24.6,
-				maxAcceleration: 1.2,
-				maxDeceleration: 1.34,
-				maxLateralAcceleration: 1.63,
-				maxSlopePercentage: 5.5,
-				minTurnRadius: 40,
-				parallelTrackSpacing: 3.7,
-				trackClearance: 1.83,
-				minStationTurnRadius: 53,
-				maxSpeedLocalStation: 14,
-				minCars: 4,
-				maxCars: 8,
-				carsPerCarSet: 4,
-				capacityPerCar: 220,
-				carLength: 18.35,
-				trainWidth: 3.05,
-				carCost: 4000000,
-				minStationLength: 80,
-				maxStationLength: 200,
-				baseTrackCost: 50000,
-				baseStationCost: 75000000,
-				scissorsCrossoverCost: 15000000,
-				trainOperationalCostPerHour: 195.0,
-				carOperationalCostPerHour: 25.5,
-				trackMaintenanceCostPerMeter: 300,
-				stationMaintenanceCostPerYear: 320,
-				stopTimeSeconds: 24,
-				tphLimit: 28,
-				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
-			},
-			elevationMultipliers: {
-				DEEP_BORE: 4.5,
-				STANDARD_TUNNEL: 2.0,
-				CUT_AND_COVER: 1.0,
-				AT_GRADE: 0.30,
-				ELEVATED: 0.8,
-				TRENCHED: 0.5,
-				RAMP: 0.5
-			},
-			appearance: { color: "#EB6800" },
-			maxOverpassSpan: 150,
-			compatibleTrackTypes: ["NYC-H","heavy-metro"],
-			portalCost: 10000000, // surcharge per at-grade ↔ cut-and-cover portal
-			rampCost: 5000000,    // surcharge per at-grade ↔ elevated ramp
 			allowGradeCrossing: false
-		})
-
-		api.trains.registerTrainType({
-			id: "PATH",
-			name: "PA5 (NYC)",
-			description: "The PA-5 is a metro EMU built by Kawasaki for the Port Authority of New York and New Jersey and its PATH service that entered service in 2009. They are a derivative of the R142As ordered by the MTA for the NYC Subway.",
-			stats: {
-				maxSpeed: 24.6,
-				maxAcceleration: 1.12,
-				maxDeceleration: 1.34,
-				maxLateralAcceleration: 1.63,
-				maxSlopePercentage: 5.5,
-				minTurnRadius: 35,
-				parallelTrackSpacing: 3.4,
-				trackClearance: 1.68,
-				minStationTurnRadius: 45,
-				maxSpeedLocalStation: 13,
-				minCars: 5,
-				maxCars: 10,
-				carsPerCarSet: 1,
-				capacityPerCar: 165,
-				carLength: 15.54,
-				trainWidth: 2.8,
-				carCost: 1467647,
-				minStationLength: 100,
-				maxStationLength: 200,
-				baseTrackCost: 50000,
-				baseStationCost: 54000000,
-				scissorsCrossoverCost: 15000000,
-				trainOperationalCostPerHour: 220.0,
-				carOperationalCostPerHour: 28,
-				trackMaintenanceCostPerMeter: 300,
-				stationMaintenanceCostPerYear: 320,
-				stopTimeSeconds: 30,
-				tphLimit: 28,
-				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
-			},
-			elevationMultipliers: {
-				DEEP_BORE: 4.06,
-				STANDARD_TUNNEL: 1.89,
-				CUT_AND_COVER: 0.95,
-				AT_GRADE: 0.30,
-				ELEVATED: 0.76,
-				TRENCHED: 0.47,
-				RAMP: 0.47
-			},
-			compatibleTrackTypes: ["PATH"],
-			appearance: { color: "#81f6fe" },
-			portalCost: 10000000, // surcharge per at-grade ↔ cut-and-cover portal
-			rampCost: 5000000,    // surcharge per at-grade ↔ elevated ramp
-			allowGradeCrossing: false,
-			maxOverpassSpan: 150
 		})
 
 		api.trains.registerTrainType({
@@ -412,12 +191,11 @@
 				TRENCHED: 0.5,
 				RAMP: 0.5
 			},
-			compatibleTrackTypes: ["auto-1","NYC-H","heavy-metro"],
+			compatibleTrackTypes: ["auto-1"],
 			appearance: { color: "#D01C10" },
 			portalCost: 10000000, // surcharge per at-grade ↔ cut-and-cover portal
 			rampCost: 5000000,    // surcharge per at-grade ↔ elevated ramp
-			allowGradeCrossing: false,
-			maxOverpassSpan: 150
+			allowGradeCrossing: false
 		})
 
 		api.trains.registerTrainType({
@@ -468,8 +246,7 @@
 			appearance: { color: "#009BD5" },
 			portalCost: 10000000, // surcharge per at-grade ↔ cut-and-cover portal
 			rampCost: 5000000,    // surcharge per at-grade ↔ elevated ramp
-			allowGradeCrossing: false,
-			maxOverpassSpan: 150
+			allowGradeCrossing: false
 		})
 
 		api.trains.registerTrainType({
@@ -520,8 +297,7 @@
 			appearance: { color: "#DA291C" },
 			portalCost: 10000000, // surcharge per at-grade ↔ cut-and-cover portal
 			rampCost: 5000000,    // surcharge per at-grade ↔ elevated ramp
-			allowGradeCrossing: false,
-			maxOverpassSpan: 150
+			allowGradeCrossing: false
 		})
 
 		api.trains.registerTrainType({
@@ -572,8 +348,7 @@
 			appearance: { color: "#305AA7" },
 			portalCost: 10000000, // surcharge per at-grade ↔ cut-and-cover portal
 			rampCost: 5000000,    // surcharge per at-grade ↔ elevated ramp
-			allowGradeCrossing: false,
-			maxOverpassSpan: 150
+			allowGradeCrossing: false
 		})
 
 		api.trains.registerTrainType({
@@ -624,8 +399,7 @@
 			appearance: { color: "#B90845" },
 			portalCost: 10000000, // surcharge per at-grade ↔ cut-and-cover portal
 			rampCost: 5000000,    // surcharge per at-grade ↔ elevated ramp
-			allowGradeCrossing: false,
-			maxOverpassSpan: 150
+			allowGradeCrossing: false
 		})
 
 		api.trains.registerTrainType({
@@ -676,8 +450,7 @@
 			appearance: { color: "#0099D8" },
 			portalCost: 10000000, // surcharge per at-grade ↔ cut-and-cover portal
 			rampCost: 5000000,    // surcharge per at-grade ↔ elevated ramp
-			allowGradeCrossing: false,
-			maxOverpassSpan: 150
+			allowGradeCrossing: false
 		})
 
 		api.trains.registerTrainType({
@@ -728,8 +501,7 @@
 			appearance: { color: "#961C27" },
 			portalCost: 10000000, // surcharge per at-grade ↔ cut-and-cover portal
 			rampCost: 5000000,    // surcharge per at-grade ↔ elevated ramp
-			allowGradeCrossing: false,
-			maxOverpassSpan: 150
+			allowGradeCrossing: false
 		})
 
 		api.trains.registerTrainType({
@@ -780,8 +552,7 @@
 			appearance: { color: "#0085CA" },
 			portalCost: 10000000, // surcharge per at-grade ↔ cut-and-cover portal
 			rampCost: 5000000,    // surcharge per at-grade ↔ elevated ramp
-			allowGradeCrossing: false,
-			maxOverpassSpan: 150
+			allowGradeCrossing: false
 		})
 
 		api.trains.registerTrainType({
@@ -837,11 +608,10 @@
 			gradeCrossingMaintenancePerYear: 8000, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 30,
-				medium: 36,
-				minor: 42,
+				major: 15,
+				medium: 18,
+				minor: 21,
 			},
-			maxOverpassSpan: 150
 		})
 
 		api.trains.registerTrainType({
@@ -897,14 +667,13 @@
 			gradeCrossingMaintenancePerYear: 8000, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 30,
-				medium: 36,
-				minor: 42,
+				major: 15,
+				medium: 18,
+				minor: 21,
 			},
-			maxOverpassSpan: 150
 		})
 
-		api.trains.modifyTrainType('commuter-rail', {
+		api.trains.modifyTrainType('commuter-rail',{
 			name: "M9 (LIRR)",
 			stats: {
 				maxSpeed: 40,
@@ -946,7 +715,7 @@
 				TRENCHED: 0.52,
 				RAMP: 0.52
 			},
-			appearance: { color: "#0039A6" },
+			appearance: { color: "#0039A6"},
 			portalCost: 10000000, // surcharge per at-grade ↔ cut-and-cover portal
 			rampCost: 5000000,    // surcharge per at-grade ↔ elevated ramp
 			allowGradeCrossing: true,
@@ -954,11 +723,10 @@
 			gradeCrossingMaintenancePerYear: 8000, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 30,
-				medium: 36,
-				minor: 42,
+				major: 15,
+				medium: 18,
+				minor: 21,
 			},
-			maxOverpassSpan: 150
 		})
 
 		api.trains.registerTrainType({
@@ -1014,11 +782,10 @@
 			gradeCrossingMaintenancePerYear: 8000, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 30,
-				medium: 36,
-				minor: 42,
+				major: 15,
+				medium: 18,
+				minor: 21,
 			},
-			maxOverpassSpan: 150
 		})
 
 		api.trains.registerTrainType({
@@ -1074,11 +841,10 @@
 			gradeCrossingMaintenancePerYear: 8000, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 30,
-				medium: 36,
-				minor: 42,
+				major: 15,
+				medium: 18,
+				minor: 21,
 			},
-			maxOverpassSpan: 150
 		})
 
 		api.trains.registerTrainType({
@@ -1134,11 +900,10 @@
 			gradeCrossingMaintenancePerYear: 8000, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 30,
-				medium: 36,
-				minor: 42,
+				major: 15,
+				medium: 18,
+				minor: 21,
 			},
-			maxOverpassSpan: 150
 		})
 
 		api.trains.registerTrainType({
@@ -1194,11 +959,10 @@
 			gradeCrossingMaintenancePerYear: 8000, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 30,
-				medium: 36,
-				minor: 42,
+				major: 15,
+				medium: 18,
+				minor: 21,
 			},
-			maxOverpassSpan: 150
 		})
 
 		api.trains.registerTrainType({
@@ -1254,11 +1018,10 @@
 			gradeCrossingMaintenancePerYear: 8000, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 30,
-				medium: 36,
-				minor: 42,
+				major: 15,
+				medium: 18,
+				minor: 21,
 			},
-			maxOverpassSpan: 150
 		})
 
 		api.trains.registerTrainType({
@@ -1309,8 +1072,7 @@
 			appearance: { color: "#9D9F9C" },
 			portalCost: 10000000, // surcharge per at-grade ↔ cut-and-cover portal
 			rampCost: 5000000,    // surcharge per at-grade ↔ elevated ramp
-			allowGradeCrossing: false,
-			maxOverpassSpan: 150
+			allowGradeCrossing: false
 		})
 
 		api.trains.registerTrainType({
@@ -1358,11 +1120,10 @@
 				RAMP: 0.46
 			},
 			compatibleTrackTypes: ["ldn"],
-			appearance: { color: "#1B3F94" },
+			appearance: { color: "#1B3F94"},
 			portalCost: 10000000, // surcharge per at-grade ↔ cut-and-cover portal
 			rampCost: 5000000,    // surcharge per at-grade ↔ elevated ramp
-			allowGradeCrossing: false,
-			maxOverpassSpan: 150
+			allowGradeCrossing: false
 		})
 
 		api.trains.registerTrainType({
@@ -1418,11 +1179,10 @@
 			gradeCrossingMaintenancePerYear: 800, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 40,
-				medium: 40,
-				minor: 80,
+				major: 20,
+				medium: 20,
+				minor: 40,
 			},
-			maxOverpassSpan: 150
 		})
 
 		api.trains.registerTrainType({
@@ -1478,11 +1238,10 @@
 			gradeCrossingMaintenancePerYear: 800, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 40,
-				medium: 40,
-				minor: 80,
+				major: 20,
+				medium: 20,
+				minor: 40,
 			},
-			maxOverpassSpan: 150
 		})
 
 		api.trains.registerTrainType({
@@ -1538,11 +1297,10 @@
 			gradeCrossingMaintenancePerYear: 800, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 40,
-				medium: 40,
-				minor: 80,
+				major: 20,
+				medium: 20,
+				minor: 40,
 			},
-			maxOverpassSpan: 150
 		})
 
 		api.trains.registerTrainType({
@@ -1598,9 +1356,9 @@
 			gradeCrossingMaintenancePerYear: 800, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 40,
-				medium: 40,
-				minor: 80,
+				major: 20,
+				medium: 20,
+				minor: 40,
 			},
 		})
 
@@ -1657,9 +1415,9 @@
 			gradeCrossingMaintenancePerYear: 800, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 40,
-				medium: 40,
-				minor: 80,
+				major: 20,
+				medium: 20,
+				minor: 40,
 			},
 		})
 
@@ -1742,7 +1500,7 @@
 				baseStationCost: 19767711,
 				scissorsCrossoverCost: 12750000,
 				trainOperationalCostPerHour: 100,
-				carOperationalCostPerHour: 12 / 9,
+				carOperationalCostPerHour: 12/9,
 				trackMaintenanceCostPerMeter: 300,
 				stationMaintenanceCostPerYear: 200,
 				stopTimeSeconds: 20,
@@ -1767,62 +1525,11 @@
 			gradeCrossingMaintenancePerYear: 800, // real-world yearly $; scaled internally by TIME_FARE_MULTIPLIER and charged per in-game day
 			gradeCrossingTphLimit: {                // combined-direction TPH cap, one per road class
 				highway: null,                      // null = forbidden; commuter rail can't cross highways
-				major: 40,
-				medium: 40,
-				minor: 80,
+				major: 20,
+				medium: 20,
+				minor: 40,
 			},
 		})
-
-		// api.trains.registerTrainType({
-		// 	id: "ferry",
-		// 	name: "Ollis-class ferry (SI Ferry)",
-		// 	description: "BUILD AS ELEVATED. The Ollis-class ferries are a trio of passenger ferries on the Staten Island Ferry, the first of which entered service in 2022",
-		// 	stats: {
-		// 		maxSpeed: 8.385,
-		// 		maxAcceleration: 0.1,
-		// 		maxDeceleration: 0.1,
-		// 		maxLateralAcceleration: 0.2,
-		// 		maxSlopePercentage: 0,
-		// 		minTurnRadius: 100,
-		// 		parallelTrackSpacing: 71,
-		// 		trackClearance: 50,
-		// 		minStationTurnRadius: 8000,
-		// 		maxSpeedLocalStation: 2.6,
-		// 		minCars: 1,
-		// 		maxCars: 1,
-		// 		carsPerCarSet: 1,
-		// 		capacityPerCar: 4500,
-		// 		carLength: 98,
-		// 		trainWidth: 21,
-		// 		carCost: 104000000,
-		// 		minStationLength: 100,
-		// 		maxStationLength: 150,
-		// 		baseTrackCost: 30/2.5,
-		// 		baseStationCost: 23000000/0.8,
-		// 		scissorsCrossoverCost: 0,
-		// 		trainOperationalCostPerHour: 9500,
-		// 		carOperationalCostPerHour: 0,
-		// 		trackMaintenanceCostPerMeter: 15,
-		// 		stationMaintenanceCostPerYear: 100000,
-		// 		stopTimeSeconds: 15*60,
-		// 		tphLimit: 6,
-		// 		crossoverSpeed: 2.6, // m/s (~15 mph) — scissors-crossover speed cap
-		// 	},
-		// 	elevationMultipliers: {
-		// 		DEEP_BORE: 100,
-		// 		STANDARD_TUNNEL: 100,
-		// 		CUT_AND_COVER: 100,
-		// 		AT_GRADE: 100,
-		// 		ELEVATED: 0,
-		// 		TRENCHED: 100,
-		// 		RAMP: 100
-		// 	},
-		// 	compatibleTrackTypes: ["ferry"],
-		// 	appearance: { color: "#FE8100" },
-		// 	portalCost: 10000000, // surcharge per at-grade ↔ cut-and-cover portal
-		// 	rampCost: 5000000,    // surcharge per at-grade ↔ elevated ramp
-		// 	allowGradeCrossing: false
-		// })
 
 	})
 })();
