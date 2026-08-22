@@ -128,7 +128,7 @@
 				carLength: 15.65,
 				trainWidth: 2.62,
 				carCost: 2270000,
-				minStationLength: 100,
+				minStationLength: 180,
 				maxStationLength: 200,
 				baseTrackCost: 50000,
 				baseStationCost: 64000000,
