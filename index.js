@@ -11,6 +11,85 @@
 		MAX_ELEVATION: 30
 	});
 	api.hooks.onMapReady(() => {
+
+		window.SubwayBuilderAPI.stations.modifyStationType('standard', {
+			name: "Low Demand Station",
+			description: "A low demand station typical of a regular metro stop. Renamed version of the default station type.",
+			transferRadiusMultiplier: 0.75,
+			icon: "ArrowDownToLine",
+			color: "#FF0000"
+		});
+
+		api.stations.registerStationType({
+			id: "25s",
+			name: "Medium-Low Demand Station",
+			description: "A lower usage station with 5 seconds more of stoppage time.",
+			catchmentMultiplier: 1.0,
+			transferRadiusMultiplier: 0.825,
+			walkSpeedMultiplier: 1.0,
+			dwellTime: 5,
+			icon: "ArrowDown",
+			color: "#ff8c00"
+		})
+
+		api.stations.registerStationType({
+			id: "30s",
+			name: "Medium Demand Station",
+			description: "A medium usage station with 10 seconds more of stoppage time",
+			catchmentMultiplier: 1.0,
+			transferRadiusMultiplier: 1.0,
+			walkSpeedMultiplier: 1.0,
+			dwellTime: 10,
+			icon: "MoveHorizontal",
+			color: "#FFFF00"
+		})
+
+		api.stations.registerStationType({
+			id: "35s",
+			name: "Medium-High Demand Station",
+			description: "A higher usage station with 15 seconds more of stoppage time",
+			catchmentMultiplier: 1.0,
+			transferRadiusMultiplier: 1.0,
+			walkSpeedMultiplier: 1.0,
+			dwellTime: 15,
+			icon: "ArrowUp",
+			color: "#00FF00"
+		})
+		api.stations.registerStationType({
+			id: "45s",
+			name: "High Demand Station",
+			description: "A high demand station with 25 seconds more of stoppage time and a larger transfer radius.",
+			catchmentMultiplier: 1.0,
+			transferRadiusMultiplier: 1.125,
+			walkSpeedMultiplier: 1.0,
+			dwellTime: 25,
+			icon: "ArrowUpToLine",
+			color: "#00FF00"
+		})
+		api.stations.registerStationType({
+			id: "50s",
+			name: "Extremely High Demand Station",
+			description: "A very high demand station with 30 seconds more of stoppage time with larger catchment and transfer radii.",
+			catchmentMultiplier: 1.15,
+			transferRadiusMultiplier: 1.25,
+			walkSpeedMultiplier: 1.0,
+			dwellTime: 30,
+			icon: "ArrowBigUpDash",
+			color: "#0000FF"
+		})
+
+		api.stations.registerStationType({
+			id: "1m",
+			name: "Delay Station",
+			description: "A medium usage station, but with high delay (+40 sec) for some reason, like interlockings and the like.",
+			catchmentMultiplier: 1.0,
+			transferRadiusMultiplier: 1.0,
+			walkSpeedMultiplier: 1.0,
+			dwellTime: 40,
+			icon: "OctagonPause",
+			color: "#666666"
+		})
+
 		console.log(Object.keys(api.trains.getTrainTypes()));
 		console.log("test");
 		api.trains.modifyTrainType('heavy-metro', {
@@ -42,9 +121,10 @@
 				carOperationalCostPerHour: 25.5,
 				trackMaintenanceCostPerMeter: 300,
 				stationMaintenanceCostPerYear: 320,
-				stopTimeSeconds: 24,
-				tphLimit: 28,
-				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
+				stopTimeSeconds: 20,
+				tphLimit: 40,
+				crossoverSpeed: 6.7,
+				turnaroundTimeSeconds: 70
 			},
 			elevationMultipliers: {
 				DEEP_BORE: 4.5,
@@ -56,7 +136,7 @@
 				RAMP: 0.5
 			},
 			appearance: { color: "#007EC6" },
-			compatibleTrackTypes: ["heavy-metro","NYC-H"],
+			compatibleTrackTypes: ["heavy-metro", "NYC-H"],
 			maxOverpassSpan: 150
 		})
 
@@ -89,9 +169,10 @@
 				carOperationalCostPerHour: 18.0,
 				trackMaintenanceCostPerMeter: 300,
 				stationMaintenanceCostPerYear: 400,
-				stopTimeSeconds: 21,
-				tphLimit: 42,
+				stopTimeSeconds: 30,
+				tphLimit: 40,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
+				turnaroundTimeSeconds: 0
 			},
 			elevationMultipliers: {
 				DEEP_BORE: 4.9,
@@ -137,9 +218,10 @@
 				carOperationalCostPerHour: 25.5,
 				trackMaintenanceCostPerMeter: 300,
 				stationMaintenanceCostPerYear: 320,
-				stopTimeSeconds: 24,
-				tphLimit: 28,
+				stopTimeSeconds: 20,
+				tphLimit: 40,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
+				turnaroundTimeSeconds: 70
 			},
 			elevationMultipliers: {
 				DEEP_BORE: 3.79,
@@ -150,7 +232,7 @@
 				TRENCHED: 0.46,
 				RAMP: 0.46
 			},
-			compatibleTrackTypes: ["NYC-7","NYC-B","NYC-0"],
+			compatibleTrackTypes: ["NYC-7", "NYC-B", "NYC-0"],
 			appearance: { color: "#9A38A1" },
 			portalCost: 10000000, // surcharge per at-grade ↔ cut-and-cover portal
 			rampCost: 5000000,    // surcharge per at-grade ↔ elevated ramp
@@ -158,8 +240,59 @@
 			maxOverpassSpan: 150
 		})
 
+		api.trains.registerTrainType({
+			id: "jfk",
+			name: "JFK Airtrain",
+			description: "The Innovia Metro ART 200 is an automated EMU built by Bombardier/Alstom in use around the world. This is the version used by JFK Airport's Airtrain, which is a close match to the B division. Some values are guesstimates",
+			stats: {
+				maxSpeed: 26.8,
+				maxAcceleration: 1.34,
+				maxDeceleration: 1.34,
+				maxLateralAcceleration: 1.63,
+				maxSlopePercentage: 5.5,
+				minTurnRadius: 70,
+				parallelTrackSpacing: 3.7,
+				trackClearance: 1.83,
+				minStationTurnRadius: 70,
+				maxSpeedLocalStation: 15,
+				minCars: 1,
+				maxCars: 4,
+				carsPerCarSet: 1,
+				capacityPerCar: 205,
+				carLength: 17.60,
+				trainWidth: 3.1,
+				carCost: 2000000,
+				minStationLength: 20,
+				maxStationLength: 120,
+				baseTrackCost: 50000,
+				baseStationCost: 82000000,
+				scissorsCrossoverCost: 18750000,
+				trainOperationalCostPerHour: 120.0,
+				carOperationalCostPerHour: 18.0,
+				trackMaintenanceCostPerMeter: 300,
+				stationMaintenanceCostPerYear: 400,
+				stopTimeSeconds: 60,
+				tphLimit: 40,
+				crossoverSpeed: 6.7,
+				turnaroundTimeSeconds: 60
+			},
+			elevationMultipliers: {
+				DEEP_BORE: 4.5,
+				STANDARD_TUNNEL: 2.0,
+				CUT_AND_COVER: 1.0,
+				AT_GRADE: 0.30,
+				ELEVATED: 0.8,
+				TRENCHED: 0.5,
+				RAMP: 0.5
+			},
+			compatibleTrackTypes: ["jfk"],
+			appearance: { color: "#2A99DA" },
+			portalCost: 10000000, // surcharge per at-grade ↔ cut-and-cover portal
+			rampCost: 5000000,    // surcharge per at-grade ↔ elevated ramp
+			allowGradeCrossing: false,
+			maxOverpassSpan: 150
+		})
 
-		
 		api.trains.registerTrainType({
 			id: "NYC-0",
 			name: "R262-6 (NYC)",
@@ -191,9 +324,10 @@
 				carOperationalCostPerHour: 25.5,
 				trackMaintenanceCostPerMeter: 300,
 				stationMaintenanceCostPerYear: 320,
-				stopTimeSeconds: 24,
-				tphLimit: 28,
+				stopTimeSeconds: 20,
+				tphLimit: 40,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
+				turnaroundTimeSeconds: 70
 			},
 			elevationMultipliers: {
 				DEEP_BORE: 3.79,
@@ -204,7 +338,7 @@
 				TRENCHED: 0.46,
 				RAMP: 0.46
 			},
-			compatibleTrackTypes: ["NYC-0","NYC-B","NYC-7"],
+			compatibleTrackTypes: ["NYC-0", "NYC-B", "NYC-7"],
 			appearance: { color: "#7C858C" },
 			portalCost: 10000000, // surcharge per at-grade ↔ cut-and-cover portal
 			rampCost: 5000000,    // surcharge per at-grade ↔ elevated ramp
@@ -243,9 +377,10 @@
 				carOperationalCostPerHour: 25.5,
 				trackMaintenanceCostPerMeter: 300,
 				stationMaintenanceCostPerYear: 320,
-				stopTimeSeconds: 24,
-				tphLimit: 28,
+				stopTimeSeconds: 20,
+				tphLimit: 40,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
+				turnaroundTimeSeconds: 70
 			},
 			elevationMultipliers: {
 				DEEP_BORE: 3.79,
@@ -256,12 +391,12 @@
 				TRENCHED: 0.46,
 				RAMP: 0.46
 			},
-			compatibleTrackTypes: ["NYC-B","NYC-0","NYC-7"],
+			compatibleTrackTypes: ["NYC-B", "NYC-0", "NYC-7"],
 			appearance: { color: "#D82233" },
 			portalCost: 10000000, // surcharge per at-grade ↔ cut-and-cover portal
 			rampCost: 5000000,    // surcharge per at-grade ↔ elevated ramp
 			allowGradeCrossing: false,
-			maxOverpassSpan: 150
+			maxOverpassSpan: 150,
 		})
 
 		api.trains.registerTrainType({
@@ -295,9 +430,10 @@
 				carOperationalCostPerHour: 25.5,
 				trackMaintenanceCostPerMeter: 300,
 				stationMaintenanceCostPerYear: 320,
-				stopTimeSeconds: 24,
-				tphLimit: 28,
+				stopTimeSeconds: 20,
+				tphLimit: 40,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
+				turnaroundTimeSeconds: 70
 			},
 			elevationMultipliers: {
 				DEEP_BORE: 4.5,
@@ -310,7 +446,7 @@
 			},
 			appearance: { color: "#EB6800" },
 			maxOverpassSpan: 150,
-			compatibleTrackTypes: ["NYC-H","heavy-metro"],
+			compatibleTrackTypes: ["NYC-H", "heavy-metro"],
 			portalCost: 10000000, // surcharge per at-grade ↔ cut-and-cover portal
 			rampCost: 5000000,    // surcharge per at-grade ↔ elevated ramp
 			allowGradeCrossing: false
@@ -347,9 +483,10 @@
 				carOperationalCostPerHour: 28,
 				trackMaintenanceCostPerMeter: 300,
 				stationMaintenanceCostPerYear: 320,
-				stopTimeSeconds: 30,
-				tphLimit: 28,
+				stopTimeSeconds: 25,
+				tphLimit: 40,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
+				turnaroundTimeSeconds: (240 - 25)
 			},
 			elevationMultipliers: {
 				DEEP_BORE: 4.06,
@@ -399,9 +536,10 @@
 				carOperationalCostPerHour: 18.0,
 				trackMaintenanceCostPerMeter: 300,
 				stationMaintenanceCostPerYear: 400,
-				stopTimeSeconds: 21,
+				stopTimeSeconds: 30,
 				tphLimit: 42,
 				crossoverSpeed: 6.7,
+				turnaroundTimeSeconds: 10
 			},
 			elevationMultipliers: {
 				DEEP_BORE: 4.5,
@@ -412,7 +550,7 @@
 				TRENCHED: 0.5,
 				RAMP: 0.5
 			},
-			compatibleTrackTypes: ["auto-1","NYC-H","heavy-metro"],
+			compatibleTrackTypes: ["auto-1", "NYC-H", "heavy-metro"],
 			appearance: { color: "#D01C10" },
 			portalCost: 10000000, // surcharge per at-grade ↔ cut-and-cover portal
 			rampCost: 5000000,    // surcharge per at-grade ↔ elevated ramp
@@ -452,8 +590,9 @@
 				trackMaintenanceCostPerMeter: 300,
 				stationMaintenanceCostPerYear: 320,
 				stopTimeSeconds: 30,
-				tphLimit: 28,
+				tphLimit: 30,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
+				turnaroundTimeSeconds: (150 - 30)
 			},
 			elevationMultipliers: {
 				DEEP_BORE: 3.79,
@@ -503,9 +642,10 @@
 				carOperationalCostPerHour: 28.0,
 				trackMaintenanceCostPerMeter: 300,
 				stationMaintenanceCostPerYear: 320,
-				stopTimeSeconds: 30,
-				tphLimit: 28,
+				stopTimeSeconds: 40,
+				tphLimit: 20,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
+				turnaroundTimeSeconds: 100
 			},
 			elevationMultipliers: {
 				DEEP_BORE: 4.5,
@@ -555,9 +695,10 @@
 				carOperationalCostPerHour: 18.0,
 				trackMaintenanceCostPerMeter: 300,
 				stationMaintenanceCostPerYear: 320,
-				stopTimeSeconds: 21,
-				tphLimit: 42,
+				stopTimeSeconds: 30,
+				tphLimit: 48,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
+				turnaroundTimeSeconds: 10
 			},
 			elevationMultipliers: {
 				DEEP_BORE: 3.79,
@@ -607,9 +748,10 @@
 				carOperationalCostPerHour: 18.0,
 				trackMaintenanceCostPerMeter: 300,
 				stationMaintenanceCostPerYear: 400,
-				stopTimeSeconds: 21,
+				stopTimeSeconds: 40,
 				tphLimit: 42,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
+				turnaroundTimeSeconds: 10
 			},
 			elevationMultipliers: {
 				DEEP_BORE: 4.68,
@@ -645,7 +787,7 @@
 				maxSpeedLocalStation: 13,
 				minCars: 2,
 				maxCars: 10,
-				carsPerCarSet: 2,
+				carsPerCarSet: 1,
 				capacityPerCar: 238,
 				carLength: 21.34,
 				trainWidth: 3.2,
@@ -659,9 +801,10 @@
 				carOperationalCostPerHour: 25.5,
 				trackMaintenanceCostPerMeter: 300,
 				stationMaintenanceCostPerYear: 320,
-				stopTimeSeconds: 32,
-				tphLimit: 24,
+				stopTimeSeconds: 20,
+				tphLimit: 30,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
+				turnaroundTimeSeconds: (3 * 60 - 20)
 			},
 			elevationMultipliers: {
 				DEEP_BORE: 4.9,
@@ -685,7 +828,7 @@
 			name: "S-Tog Gen 5 (CPH)",
 			description: "The currently unnamed 5th Generation of rolling stock on the Copenhagen S-Tog is being designed by a Siemens-Stadler consortium. They will be fully automatic S-Tog / S-Bahn EMUs and are supposed to enter service in 2032.",
 			stats: {
-				maxSpeed: 33.3,
+				maxSpeed: 33.5,
 				maxAcceleration: 1.3,
 				maxDeceleration: 1.3,
 				maxLateralAcceleration: 1.89,
@@ -711,9 +854,10 @@
 				carOperationalCostPerHour: 40.0,
 				trackMaintenanceCostPerMeter: 300,
 				stationMaintenanceCostPerYear: 380,
-				stopTimeSeconds: 32,
-				tphLimit: 42,
+				stopTimeSeconds: 30,
+				tphLimit: 40,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
+				turnaroundTimeSeconds: (3 * 60 - 30)
 			},
 			elevationMultipliers: {
 				DEEP_BORE: 6.3,
@@ -741,11 +885,11 @@
 				maxAcceleration: 1.21,
 				maxDeceleration: 1.23,
 				maxLateralAcceleration: 0.9,
-				maxSlopePercentage: 12,
-				minTurnRadius: 35,
+				maxSlopePercentage: 6.5,
+				minTurnRadius: 52,
 				parallelTrackSpacing: 3.1,
 				trackClearance: 1.53,
-				minStationTurnRadius: 500,
+				minStationTurnRadius: 200,
 				maxSpeedLocalStation: 13,
 				minCars: 9,
 				maxCars: 9,
@@ -763,9 +907,10 @@
 				carOperationalCostPerHour: 32.5,
 				trackMaintenanceCostPerMeter: 100,
 				stationMaintenanceCostPerYear: 320,
-				stopTimeSeconds: 32,
-				tphLimit: 24,
+				stopTimeSeconds: 20,
+				tphLimit: 40,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
+				turnaroundTimeSeconds: (2 * 60 - 20)
 			},
 			elevationMultipliers: {
 				DEEP_BORE: 3.63,
@@ -815,9 +960,10 @@
 				carOperationalCostPerHour: 47.5,
 				trackMaintenanceCostPerMeter: 300,
 				stationMaintenanceCostPerYear: 300,
-				stopTimeSeconds: 36,
-				tphLimit: 32,
+				stopTimeSeconds: 30,
+				tphLimit: 30,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
+				turnaroundTimeSeconds: (3 * 60 - 30)
 			},
 			elevationMultipliers: {
 				DEEP_BORE: 6.3,
@@ -875,9 +1021,10 @@
 				carOperationalCostPerHour: 50.0,
 				trackMaintenanceCostPerMeter: 300,
 				stationMaintenanceCostPerYear: 300,
-				stopTimeSeconds: 45,
-				tphLimit: 28,
+				stopTimeSeconds: 50,
+				tphLimit: 30,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
+				turnaroundTimeSeconds: (3 * 60 - 50)
 			},
 			elevationMultipliers: {
 				DEEP_BORE: 6.71,
@@ -933,9 +1080,10 @@
 				carOperationalCostPerHour: 40.0,
 				trackMaintenanceCostPerMeter: 300,
 				stationMaintenanceCostPerYear: 300,
-				stopTimeSeconds: 60,
+				stopTimeSeconds: 40,
 				tphLimit: 28,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
+				turnaroundTimeSeconds: (4 * 60 - 40)
 			},
 			elevationMultipliers: {
 				DEEP_BORE: 5.26,
@@ -992,9 +1140,10 @@
 				carOperationalCostPerHour: 50.0,
 				trackMaintenanceCostPerMeter: 300,
 				stationMaintenanceCostPerYear: 300,
-				stopTimeSeconds: 60,
-				tphLimit: 28,
+				stopTimeSeconds: 30,
+				tphLimit: 30,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
+				turnaroundTimeSeconds: (3 * 60 - 30)
 			},
 			elevationMultipliers: {
 				DEEP_BORE: 5.46,
@@ -1052,9 +1201,10 @@
 				carOperationalCostPerHour: 50.0,
 				trackMaintenanceCostPerMeter: 300,
 				stationMaintenanceCostPerYear: 300,
-				stopTimeSeconds: 60,
-				tphLimit: 28,
+				stopTimeSeconds: 30,
+				tphLimit: 23,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
+				turnaroundTimeSeconds: (3 * 60 - 30)
 			},
 			elevationMultipliers: {
 				DEEP_BORE: 5.46,
@@ -1112,9 +1262,10 @@
 				carOperationalCostPerHour: 75.0,
 				trackMaintenanceCostPerMeter: 100,
 				stationMaintenanceCostPerYear: 300,
-				stopTimeSeconds: 60,
-				tphLimit: 28,
+				stopTimeSeconds: 30,
+				tphLimit: 20,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
+				turnaroundTimeSeconds: (5 * 60 - 30)
 			},
 			elevationMultipliers: {
 				DEEP_BORE: 4.82,
@@ -1172,9 +1323,10 @@
 				carOperationalCostPerHour: 75.0,
 				trackMaintenanceCostPerMeter: 100,
 				stationMaintenanceCostPerYear: 300,
-				stopTimeSeconds: 60,
-				tphLimit: 28,
+				stopTimeSeconds: 30,
+				tphLimit: 10,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
+				turnaroundTimeSeconds: (5 * 60 - 30)
 			},
 			elevationMultipliers: {
 				DEEP_BORE: 4.82,
@@ -1233,8 +1385,9 @@
 				trackMaintenanceCostPerMeter: 300,
 				stationMaintenanceCostPerYear: 300,
 				stopTimeSeconds: 60,
-				tphLimit: 28,
+				tphLimit: 20,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
+				turnaroundTimeSeconds: (8 * 60 - 60)
 			},
 			elevationMultipliers: {
 				DEEP_BORE: 5.46,
@@ -1292,9 +1445,10 @@
 				carOperationalCostPerHour: 18,
 				trackMaintenanceCostPerMeter: 300,
 				stationMaintenanceCostPerYear: 400,
-				stopTimeSeconds: 24,
-				tphLimit: 28,
+				stopTimeSeconds: 30,
+				tphLimit: 36,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
+				turnaroundTimeSeconds: (2 * 60 - 30)
 			},
 			elevationMultipliers: {
 				DEEP_BORE: 4.6,
@@ -1344,9 +1498,10 @@
 				carOperationalCostPerHour: 18,
 				trackMaintenanceCostPerMeter: 300,
 				stationMaintenanceCostPerYear: 400,
-				stopTimeSeconds: 24,
-				tphLimit: 28,
+				stopTimeSeconds: 30,
+				tphLimit: 36,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
+				turnaroundTimeSeconds: (2 * 60 - 30)
 			},
 			elevationMultipliers: {
 				DEEP_BORE: 3.79,
@@ -1397,8 +1552,9 @@
 				trackMaintenanceCostPerMeter: 300,
 				stationMaintenanceCostPerYear: 200,
 				stopTimeSeconds: 20,
-				tphLimit: 28,
+				tphLimit: 24,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
+				turnaroundTimeSeconds: (2 * 60 - 20)
 			},
 			elevationMultipliers: {
 				DEEP_BORE: 4.47,
@@ -1457,8 +1613,9 @@
 				trackMaintenanceCostPerMeter: 300,
 				stationMaintenanceCostPerYear: 200,
 				stopTimeSeconds: 20,
-				tphLimit: 28,
+				tphLimit: 24,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
+				turnaroundTimeSeconds: (2 * 60 - 20)
 			},
 			elevationMultipliers: {
 				DEEP_BORE: 4.47,
@@ -1517,8 +1674,9 @@
 				trackMaintenanceCostPerMeter: 300,
 				stationMaintenanceCostPerYear: 200,
 				stopTimeSeconds: 20,
-				tphLimit: 28,
+				tphLimit: 40,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
+				turnaroundTimeSeconds: 2 * 60 - 20
 			},
 			elevationMultipliers: {
 				DEEP_BORE: 4.47,
@@ -1576,9 +1734,10 @@
 				carOperationalCostPerHour: 4,
 				trackMaintenanceCostPerMeter: 300,
 				stationMaintenanceCostPerYear: 200,
-				stopTimeSeconds: 20,
-				tphLimit: 28,
+				stopTimeSeconds: 30,
+				tphLimit: 24,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
+				turnaroundTimeSeconds: 2 * 60 - 30
 			},
 			elevationMultipliers: {
 				DEEP_BORE: 4.61,
@@ -1636,8 +1795,9 @@
 				trackMaintenanceCostPerMeter: 300,
 				stationMaintenanceCostPerYear: 200,
 				stopTimeSeconds: 20,
-				tphLimit: 28,
+				tphLimit: 12,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
+				turnaroundTimeSeconds: 3 * 60 - 20
 			},
 			elevationMultipliers: {
 				DEEP_BORE: 4.47,
@@ -1695,8 +1855,9 @@
 				trackMaintenanceCostPerMeter: 300,
 				stationMaintenanceCostPerYear: 200,
 				stopTimeSeconds: 20,
-				tphLimit: 32,
+				tphLimit: 30,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
+				turnaroundTimeSeconds: 2 * 60 - 20
 			},
 			elevationMultipliers: {
 				DEEP_BORE: 4.47,
@@ -1745,9 +1906,10 @@
 				carOperationalCostPerHour: 12 / 9,
 				trackMaintenanceCostPerMeter: 300,
 				stationMaintenanceCostPerYear: 200,
-				stopTimeSeconds: 20,
-				tphLimit: 28,
+				stopTimeSeconds: 15,
+				tphLimit: 30,
 				crossoverSpeed: 6.7, // m/s (~15 mph) — scissors-crossover speed cap
+				turnaroundTimeSeconds: 2 * 60 - 15
 			},
 			elevationMultipliers: {
 				DEEP_BORE: 4.15,
