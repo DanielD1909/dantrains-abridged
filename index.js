@@ -27,7 +27,7 @@
 			catchmentMultiplier: 1.0,
 			transferRadiusMultiplier: 0.825,
 			walkSpeedMultiplier: 1.0,
-			dwellTime: 5,
+			extraDwellTime: 5,
 			icon: "ArrowDown",
 			color: "#ff8c00"
 		})
@@ -39,7 +39,7 @@
 			catchmentMultiplier: 1.0,
 			transferRadiusMultiplier: 1.0,
 			walkSpeedMultiplier: 1.0,
-			dwellTime: 10,
+			extraDwellTime: 10,
 			icon: "MoveHorizontal",
 			color: "#FFFF00"
 		})
@@ -51,7 +51,7 @@
 			catchmentMultiplier: 1.0,
 			transferRadiusMultiplier: 1.0,
 			walkSpeedMultiplier: 1.0,
-			dwellTime: 15,
+			extraDwellTime: 15,
 			icon: "ArrowUp",
 			color: "#00FF00"
 		})
@@ -62,7 +62,7 @@
 			catchmentMultiplier: 1.0,
 			transferRadiusMultiplier: 1.125,
 			walkSpeedMultiplier: 1.0,
-			dwellTime: 25,
+			extraDwellTime: 25,
 			icon: "ArrowUpToLine",
 			color: "#00FF00"
 		})
@@ -73,7 +73,7 @@
 			catchmentMultiplier: 1.15,
 			transferRadiusMultiplier: 1.25,
 			walkSpeedMultiplier: 1.0,
-			dwellTime: 30,
+			extraDwellTime: 30,
 			icon: "ArrowBigUpDash",
 			color: "#0000FF"
 		})
@@ -85,7 +85,7 @@
 			catchmentMultiplier: 1.0,
 			transferRadiusMultiplier: 1.0,
 			walkSpeedMultiplier: 1.0,
-			dwellTime: 40,
+			extraDwellTime: 40,
 			icon: "OctagonPause",
 			color: "#666666"
 		})
