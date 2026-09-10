@@ -1058,7 +1058,7 @@
 				maxAcceleration: 0.9,
 				maxDeceleration: 1.33,
 				maxLateralAcceleration: 1.89,
-				maxSlopePercentage: 2,
+				maxSlopePercentage: 3,
 				minTurnRadius: 50,
 				parallelTrackSpacing: 3.94,
 				trackClearance: 1.95,
